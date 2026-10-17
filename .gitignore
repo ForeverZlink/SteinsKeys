@@ -1,0 +1,24 @@
+# Dependências Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Compilação Rust / Tauri (NUNCA subir para o Git - arquivos gigantes)
+src-tauri/target/
+src-tauri/gen/
+target/
+
+# Pasta temporária opcional
+native-host/
+*.exe
+
+# Logs e Sistema
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

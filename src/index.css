@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: #27272A;
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #09090B;
+    color: #FAFAFA;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Estilização minimalista monocromática para Sliders (Input Range) */
+input[type="range"].noir-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"].noir-slider::-webkit-slider-runnable-track {
+  background: #27272A;
+  height: 3px;
+  border-radius: 1px;
+}
+
+input[type="range"].noir-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -5px;
+  background-color: #FFFFFF;
+  height: 13px;
+  width: 13px;
+  border-radius: 2px;
+  border: 1px solid #09090B;
+  transition: transform 120ms ease;
+}
+
+input[type="range"].noir-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+/* Grade pontilhada sutil (Dot-Matrix) para o Playground de Teste */
+.noir-dot-matrix {
+  background-color: #09090B;
+  background-image: radial-gradient(#27272A 1px, transparent 1px);
+  background-size: 16px 16px;
+}
