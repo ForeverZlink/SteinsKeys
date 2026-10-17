@@ -1,0 +1,52 @@
+name: Build & Release Steins;Keys (Windows x64)
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Rust Stable Toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      - name: Build Tauri Application (Release)
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: "Steins;Keys v__VERSION__"
+          releaseBody: |
+            ## Steins;Keys — Monochrome Editorial Noir Control Surface
+            Ultra-low-latency mouse axis inverter, hardware button remapper, and WASAPI acoustic synthesizer for Windows.
+
+            ### Downloads
+            - **Installer (`.exe` NSIS):** `Steins.Keys___VERSION___x64-setup.exe`
+            - **MSI Package (`.msi`):** `Steins.Keys___VERSION___x64_en-US.msi`
+          releaseDraft: false
+          prerelease: false
