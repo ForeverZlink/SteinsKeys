@@ -105,7 +105,7 @@ SteinsKeys/
 
 1. **Clone the repository:**
    ```powershell
-   git clone https://github.com/YOUR-USERNAME/SteinsKeys.git
+   git clone https://github.com/ForeverZlink/SteinsKeys.git
    cd SteinsKeys
    ```
 
