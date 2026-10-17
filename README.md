@@ -13,11 +13,33 @@
 
 ---
 
-## Overview
+## The Problem Nobody Fixed — Until Now
 
-**Steins;Keys** is an open-source, ultra-low-latency mouse utility engineered for competitive FPS players and power users on Windows who rely on **inverted axes (Pitch/Yaw)**, **sensor angle rotation**, **physical button remapping**, and **tactile acoustic click feedback** with zero input lag.
+If you have spent years playing FPS games or flight simulators with **Inverted Mouse (Y-Axis / X-Axis)**, your brain and muscle memory are wired that way. Yet the moment you close your game or `Alt+Tab` back to the desktop, **Windows forces you back into standard cursor movement.**
+
+Despite decades of Windows releases, **Microsoft has never included a native setting to invert mouse axes on the desktop**—and modern games that lack built-in axis inversion leave inverted players completely locked out.
+
+**Steins;Keys** was built to solve this once and for all.
+
+Whether you want to bring your inverted muscle memory to the **Windows desktop**, force axis inversion inside games that don't support it natively, rotate your sensor angle, remap your 5 mouse buttons, or add ultra-crisp mechanical click sounds—**Steins;Keys** intercepts and transforms your mouse vectors in real time with **zero input lag**.
+
+---
+
+## Technical Overview
+
+**Steins;Keys** is an open-source, ultra-low-latency mouse utility engineered in **Rust + Tauri v2** for competitive FPS players and power users on Windows.
 
 Designed around a strict **Monochrome Editorial Noir** interface (inspired by Linear, Vercel Geist, and Wootility), Steins;Keys eliminates bloated background processes and garbage-collector pauses, supporting high-polling-rate mice from **1000Hz up to 8000Hz**.
+
+---
+
+## Quick Download & Installation (No Build Required)
+
+If you just want to use **Steins;Keys** right away without compiling the source code:
+
+1. Go to the **[Releases](../../releases)** page of this repository.
+2. Download the latest **`.msi`** installer (`Steins.Keys_x64_en-US.msi`) or **`.exe`** setup (`Steins.Keys_x64-setup.exe`).
+3. Run the installer and launch **Steins;Keys** from your Start Menu or Desktop.
 
 ---
 
