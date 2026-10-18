@@ -215,31 +215,31 @@ const NAV_TABS: {
 }[] = [
   {
     id: "axes",
-    label: "Eixos & Movimento",
+    label: "Axes & Movement",
     meta: "X/Y",
     icon: Compass,
   },
   {
     id: "buttons",
-    label: "Botões & Atalhos",
+    label: "Buttons & Shortcuts",
     meta: "5 BTN",
     icon: MousePointer,
   },
   {
     id: "acoustics",
-    label: "Acústica (Sons)",
+    label: "Click Sounds",
     meta: "WAV",
     icon: Volume2,
   },
   {
     id: "profiles",
-    label: "Perfis de Jogos",
+    label: "Game Profiles",
     meta: ".EXE",
     icon: Gamepad2,
   },
   {
     id: "system",
-    label: "Sistema & Bandeja",
+    label: "System & Tray",
     meta: "SYS",
     icon: Settings2,
   },
@@ -249,25 +249,25 @@ const ACOUSTIC_PRESETS = [
   {
     id: "ibm_selectric",
     title: "Noir Typewriter",
-    subtitle: "Impacto mecânico seco inspirado na IBM Selectric II",
+    subtitle: "Crisp mechanical click inspired by the IBM Selectric II",
     spec: "1.4kHz Square Decay // 18ms",
   },
   {
     id: "nixie_mechanical",
     title: "Heavy Mechanical",
-    subtitle: "Switch tátil pesado com transiente de mola metálica",
+    subtitle: "Deep tactile switch with a metallic spring snap",
     spec: "1.9kHz Triangle // 15ms",
   },
   {
     id: "soft_tactile",
     title: "Soft Tactile",
-    subtitle: "Pulso acústico curto e discreto para sessões longas",
+    subtitle: "Short, quiet sound pulse for long sessions",
     spec: "820Hz Sine Low-Pass // 11ms",
   },
   {
     id: "lab_divergence",
     title: "Retro Beep",
-    subtitle: "Micro-pulso analógico de laboratório nos anos 80",
+    subtitle: "Classic 80s analog lab micro-beep",
     spec: "2.4kHz Sawtooth // 14ms",
   },
 ];
@@ -280,44 +280,44 @@ const MOUSE_BUTTON_ROWS: {
 }[] = [
   {
     id: "left",
-    title: "Clique Esquerdo",
+    title: "Left Click",
     code: "M1",
-    desc: "Disparo primário / Seleção padrão do sistema",
+    desc: "Primary fire / Standard system click",
   },
   {
     id: "right",
-    title: "Clique Direito",
+    title: "Right Click",
     code: "M2",
-    desc: "Mira (ADS) / Menu de contexto secundário",
+    desc: "Aim (ADS) / Context menu",
   },
   {
     id: "middle",
-    title: "Scroll Click",
+    title: "Middle Click (Scroll)",
     code: "M3",
-    desc: "Pressionamento da roda central (Ping / Roda tática)",
+    desc: "Scroll wheel click (Ping / Tactical wheel)",
   },
   {
     id: "x_button1",
-    title: "Lateral 1 (Voltar)",
+    title: "Side Button 1 (Back)",
     code: "M4",
-    desc: "Botão lateral traseiro do polegar (XButton1)",
+    desc: "Rear thumb button (XButton1)",
   },
   {
     id: "x_button2",
-    title: "Lateral 2 (Avançar)",
+    title: "Side Button 2 (Forward)",
     code: "M5",
-    desc: "Botão lateral frontal do polegar (XButton2)",
+    desc: "Front thumb button (XButton2)",
   },
 ];
 
 const REMAP_OPTIONS: { value: MouseButton; label: string }[] = [
-  { value: "left", label: "M1 — Clique Esquerdo" },
-  { value: "right", label: "M2 — Clique Direito" },
-  { value: "middle", label: "M3 — Scroll Click" },
-  { value: "x_button1", label: "M4 — Lateral 1 (Back)" },
-  { value: "x_button2", label: "M5 — Lateral 2 (Forward)" },
-  { value: "scroll_up", label: "Scroll Up (Rolar p/ Cima)" },
-  { value: "scroll_down", label: "Scroll Down (Rolar p/ Baixo)" },
+  { value: "left", label: "M1 — Left Click" },
+  { value: "right", label: "M2 — Right Click" },
+  { value: "middle", label: "M3 — Middle Click" },
+  { value: "x_button1", label: "M4 — Side 1 (Back)" },
+  { value: "x_button2", label: "M5 — Side 2 (Forward)" },
+  { value: "scroll_up", label: "Scroll Up" },
+  { value: "scroll_down", label: "Scroll Down" },
 ];
 
 // ============================================================================
@@ -346,7 +346,7 @@ export const App: React.FC = () => {
   const [destroyWebviewOnClose, setDestroyWebviewOnClose] =
     useState<boolean>(true);
   const [activeProfileLabel, setActiveProfileLabel] = useState<string>(
-    "Perfil: Padrão Desktop"
+    "Profile: Desktop Default"
   );
   const [isNativeTauri, setIsNativeTauri] = useState<boolean>(false);
 
@@ -685,7 +685,7 @@ export const App: React.FC = () => {
                 config.active ? "bg-[#09090B]" : "bg-[#52525B]"
               }`}
             />
-            {config.active ? "Sistema Ativo" : "Pausado"}
+            {config.active ? "System Active" : "Paused"}
           </button>
         </div>
       </header>
@@ -698,7 +698,7 @@ export const App: React.FC = () => {
         <aside className="w-56 shrink-0 bg-[#0C0C0E] border-r border-[#1F1F23] p-3 flex flex-col justify-between">
           <nav className="space-y-1">
             <div className="px-3 py-2 font-mono text-[10px] uppercase tracking-widest text-[#52525B]">
-              Módulos de Controle
+              Control Modules
             </div>
             {NAV_TABS.map((tab) => {
               const Icon = tab.icon;
@@ -739,7 +739,7 @@ export const App: React.FC = () => {
           <div className="p-3 rounded-sm bg-[#121215] border border-[#27272A] space-y-2">
             <div className="flex items-center justify-between">
               <span className="font-mono text-[10px] text-[#A1A1AA]">
-                VETOR ATIVO
+                ACTIVE VECTOR
               </span>
               <span className="font-mono text-[10px] text-[#FAFAFA]">
                 {config.invert_y ? "-Y" : "+Y"} /{" "}
@@ -748,7 +748,7 @@ export const App: React.FC = () => {
             </div>
             <div className="flex items-center justify-between">
               <span className="font-mono text-[10px] text-[#A1A1AA]">
-                ÂNGULO θ
+                ANGLE θ
               </span>
               <span className="font-mono text-[10px] text-[#FAFAFA]">
                 {config.rotation_deg}°
@@ -756,7 +756,7 @@ export const App: React.FC = () => {
             </div>
             <div className="pt-1.5 border-t border-[#1F1F23] flex items-center justify-between">
               <span className="font-mono text-[10px] text-[#52525B]">
-                LATÊNCIA
+                LATENCY
               </span>
               <span className="font-mono text-[10px] text-[#A1A1AA]">
                 &lt; 0.12ms (8KHz)
@@ -773,18 +773,18 @@ export const App: React.FC = () => {
           {activeTab === "axes" && (
             <div className="max-w-4xl mx-auto flex flex-col h-full">
               <SectionHeader
-                title="Eixos & Movimento"
-                subtitle="Transformação vetorial instantânea para jogadores de eixo invertido e ajustes ergonômicos de sensor."
-                badge="MATRIZ 2D"
+                title="Axes & Movement"
+                subtitle="Instant mouse movement adjustments for inverted-axis players and custom sensor angles."
+                badge="2D MATRIX"
               />
 
               <div className="grid grid-cols-2 gap-4">
                 {/* Card 1: Inversão de Eixos */}
                 <SettingCard
-                  title="Inversão de Eixos"
-                  description="Inverte a polaridade do movimento vertical (Pitch) ou horizontal (Yaw) de forma independente."
+                  title="Invert Axes"
+                  description="Flip vertical (up/down) or horizontal (left/right) mouse movement independently."
                   active={config.invert_y || config.invert_x}
-                  badge="POLARIDADE"
+                  badge="DIRECTION"
                 >
                   <div className="grid grid-cols-2 gap-3 pt-1">
                     {/* Botão Grande: Inverter Eixo Y */}
@@ -805,12 +805,12 @@ export const App: React.FC = () => {
                           strokeWidth={1.5}
                         />
                         <span className="font-mono text-[10px] uppercase">
-                          {config.invert_y ? "ATIVO" : "PADRÃO"}
+                          {config.invert_y ? "ACTIVE" : "DEFAULT"}
                         </span>
                       </div>
                       <div>
                         <div className="font-sans text-xs font-semibold">
-                          Inverter Eixo Y
+                          Invert Y-Axis
                         </div>
                         <div
                           className={`font-mono text-[10px] mt-0.5 ${
@@ -842,12 +842,12 @@ export const App: React.FC = () => {
                           strokeWidth={1.5}
                         />
                         <span className="font-mono text-[10px] uppercase">
-                          {config.invert_x ? "ATIVO" : "PADRÃO"}
+                          {config.invert_x ? "ACTIVE" : "DEFAULT"}
                         </span>
                       </div>
                       <div>
                         <div className="font-sans text-xs font-semibold">
-                          Inverter Eixo X
+                          Invert X-Axis
                         </div>
                         <div
                           className={`font-mono text-[10px] mt-0.5 ${
@@ -865,20 +865,20 @@ export const App: React.FC = () => {
 
                 {/* Card 2: Troca & Orientação */}
                 <SettingCard
-                  title="Troca & Orientação"
-                  description="Transpõe os eixos ortogonais ou rotaciona o ângulo de leitura do sensor sem perda sub-pixel."
+                  title="Swap & Angle"
+                  description="Swap horizontal and vertical axes or rotate your mouse sensor angle smoothly."
                   active={config.swap_axes || config.rotation_deg !== 0}
-                  badge="GEOMETRIA"
+                  badge="GEOMETRY"
                 >
                   <div className="space-y-4 pt-1">
                     {/* Toggle Swap X/Y */}
                     <div className="flex items-center justify-between p-2.5 rounded-sm bg-[#09090B] border border-[#27272A]">
                       <div>
                         <div className="font-sans text-xs font-medium text-[#FAFAFA]">
-                          Trocar X por Y (Swap Axes)
+                          Swap X and Y Axes
                         </div>
                         <div className="font-mono text-[10px] text-[#A1A1AA]">
-                          Permuta movimento horizontal e vertical
+                          Switches horizontal and vertical movement
                         </div>
                       </div>
                       <NoirSwitch
@@ -894,7 +894,7 @@ export const App: React.FC = () => {
                       <div className="flex items-center justify-between mb-2">
                         <span className="font-sans text-xs text-[#A1A1AA] flex items-center gap-1.5">
                           <RotateCcw className="w-3.5 h-3.5" strokeWidth={1.5} />
-                          Ângulo do Sensor
+                          Sensor Angle
                         </span>
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-xs text-[#FAFAFA]">
@@ -933,8 +933,8 @@ export const App: React.FC = () => {
 
                 {/* Card 3: Playground de Teste (Live Canvas - Ocupa 2 Colunas) */}
                 <SettingCard
-                  title="Playground de Teste (Live Canvas)"
-                  description="Mova o cursor dentro da grade abaixo para testar a resposta dos eixos em tempo real."
+                  title="Movement Test Area (Live Preview)"
+                  description="Move your cursor inside the grid below to test your axis settings in real time."
                   className="col-span-2"
                   headerRight={
                     <div className="flex items-center gap-2 font-mono text-[11px] text-[#A1A1AA] bg-[#09090B] px-2.5 py-1 rounded-sm border border-[#27272A]">
@@ -960,8 +960,8 @@ export const App: React.FC = () => {
                     <div className="pointer-events-none absolute bottom-2 left-3 right-3 flex items-center justify-between font-mono text-[10px] text-[#52525B]">
                       <span>INTERACTIVE VECTOR SURFACE</span>
                       <span className="text-[#A1A1AA]">
-                        {config.invert_y ? "Y: INVERTIDO" : "Y: NORMAL"} ·{" "}
-                        {config.invert_x ? "X: INVERTIDO" : "X: NORMAL"}
+                        {config.invert_y ? "Y: INVERTED" : "Y: NORMAL"} ·{" "}
+                        {config.invert_x ? "X: INVERTED" : "X: NORMAL"}
                         {config.swap_axes ? " · SWAP X↔Y" : ""}
                       </span>
                     </div>
@@ -977,8 +977,8 @@ export const App: React.FC = () => {
           {activeTab === "buttons" && (
             <div className="max-w-4xl mx-auto">
               <SectionHeader
-                title="Botões & Atalhos"
-                subtitle="Remapeamento direto dos 5 botões físicos do mouse e definição do Kill Switch global."
+                title="Buttons & Shortcuts"
+                subtitle="Remap your 5 physical mouse buttons and configure your global emergency shortcut."
                 badge="HID REMAP"
                 rightSlot={
                   Object.keys(config.button_remap).length > 0 && (
@@ -989,7 +989,7 @@ export const App: React.FC = () => {
                       }
                       className="px-3 py-1.5 rounded-sm border border-[#27272A] bg-[#121215] hover:border-[#FAFAFA] font-sans text-xs text-[#FAFAFA] transition-colors"
                     >
-                      Restaurar Padrões
+                      Reset to Default
                     </button>
                   )
                 }
@@ -1059,8 +1059,8 @@ export const App: React.FC = () => {
                 {/* Coluna Lateral: Kill Switch & Inversão Rápida Canhoto (4 colunas) */}
                 <div className="col-span-4 flex flex-col gap-4">
                   <SettingCard
-                    title="Kill Switch de Emergência"
-                    description="Desativa instantaneamente toda interceptação de eixos e botões em qualquer tela ou jogo."
+                    title="Emergency Kill Switch"
+                    description="Instantly turns off all axis and button changes anywhere on your PC or in-game."
                     active
                   >
                     <div className="space-y-3 pt-1">
@@ -1090,13 +1090,13 @@ export const App: React.FC = () => {
                   </SettingCard>
 
                   <SettingCard
-                    title="Modo Canhoto Rápido"
-                    description="Inverte imediatamente M1 ( Clique Esquerdo ) com M2 ( Clique Direito )."
+                    title="Quick Left-Handed Mode"
+                    description="Instantly swaps Left Click (M1) and Right Click (M2)."
                     active={config.button_remap["left"] === "right"}
                   >
                     <div className="flex items-center justify-between pt-2">
                       <span className="font-mono text-xs text-[#A1A1AA]">
-                        Permutar M1 ↔ M2
+                        Swap M1 ↔ M2
                       </span>
                       <NoirSwitch
                         checked={config.button_remap["left"] === "right"}
@@ -1124,8 +1124,8 @@ export const App: React.FC = () => {
           {activeTab === "acoustics" && (
             <div className="max-w-4xl mx-auto">
               <SectionHeader
-                title="Acústica & Feedback Tátil"
-                subtitle="Síntese sonora de baixíssima latência pré-carregada em memória RAM para cada acionamento físico."
+                title="Click Sounds & Audio Feedback"
+                subtitle="Ultra-low-latency click sounds preloaded in memory for every mouse press."
                 badge="WASAPI < 2ms"
                 rightSlot={
                   <div className="flex items-center gap-3 bg-[#121215] border border-[#27272A] px-3.5 py-2 rounded-sm">
@@ -1135,7 +1135,7 @@ export const App: React.FC = () => {
                       <VolumeX className="w-4 h-4 text-[#52525B]" strokeWidth={1.5} />
                     )}
                     <span className="font-sans text-xs text-[#FAFAFA]">
-                      Feedback Sonoro
+                      Click Sounds
                     </span>
                     <NoirSwitch
                       size="sm"
@@ -1179,7 +1179,7 @@ export const App: React.FC = () => {
                           {preset.spec}
                         </span>
                         <span className="font-mono text-[10px] text-[#A1A1AA]">
-                          {isSelected ? "SELECIONADO" : "CLIQUE P/ TESTAR"}
+                          {isSelected ? "SELECTED" : "CLICK TO TEST"}
                         </span>
                       </div>
                     </SettingCard>
@@ -1189,8 +1189,8 @@ export const App: React.FC = () => {
 
               {/* Card de Volume Master em Preto e Branco */}
               <SettingCard
-                title="Volume de Saída & Ganho Acústico"
-                description="Ajuste de amplitude do buffer PCM sem introduzir compressão ou atraso na fila de áudio."
+                title="Master Volume"
+                description="Adjust click sound volume with zero audio delay."
               >
                 <div className="flex items-center gap-5 pt-1">
                   <Sliders className="w-4 h-4 text-[#A1A1AA] shrink-0" strokeWidth={1.5} />
@@ -1220,8 +1220,8 @@ export const App: React.FC = () => {
           {activeTab === "profiles" && (
             <div className="max-w-4xl mx-auto">
               <SectionHeader
-                title="Perfis de Jogos (.exe)"
-                subtitle="Monitoramento ativo via Win32 EVENT_SYSTEM_FOREGROUND para ativar regras apenas quando o jogo estiver em foco."
+                title="Game Profiles (.exe)"
+                subtitle="Automatically activates your custom mouse settings when a game window is in focus."
                 badge="AUTO-SWITCH"
               />
 
@@ -1231,7 +1231,7 @@ export const App: React.FC = () => {
                   <FolderGit2 className="w-4 h-4 text-[#A1A1AA]" strokeWidth={1.5} />
                   <input
                     type="text"
-                    placeholder="Ex: quake.exe, ow2.exe, deadlock.exe..."
+                    placeholder="e.g. quake.exe, ow2.exe, deadlock.exe..."
                     value={newExeInput}
                     onChange={(e) => setNewExeInput(e.target.value)}
                     className="bg-[#09090B] border border-[#27272A] focus:border-[#FAFAFA] rounded-sm px-3 py-1.5 font-mono text-xs text-[#FAFAFA] w-full focus:outline-none"
@@ -1262,7 +1262,7 @@ export const App: React.FC = () => {
                   className="px-4 py-1.5 rounded-sm bg-[#FFFFFF] text-[#09090B] font-sans text-xs font-medium flex items-center gap-1.5 shrink-0"
                 >
                   <Plus className="w-3.5 h-3.5" strokeWidth={2} />
-                  Adicionar Executável
+                  Add Game (.exe)
                 </button>
               </div>
 
@@ -1289,7 +1289,7 @@ export const App: React.FC = () => {
                           );
                           if (val) {
                             setActiveProfileLabel(
-                              `Auto: ${prof.executable} monitorado`
+                              `Auto: watching ${prof.executable}`
                             );
                           }
                         }}
@@ -1304,8 +1304,8 @@ export const App: React.FC = () => {
                           </span>
                         </div>
                         <div className="font-mono text-[10px] text-[#A1A1AA] mt-1">
-                          Regra:{" "}
-                          {prof.invertY ? "Inverter Y" : "Y Normal"} ·{" "}
+                          Rule:{" "}
+                          {prof.invertY ? "Invert Y" : "Normal Y"} ·{" "}
                           {prof.mode === "fps_kernel_driver"
                             ? "Kernel Raw Input"
                             : "Desktop Hook"}
@@ -1317,7 +1317,7 @@ export const App: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => {
-                          setActiveProfileLabel(`Ativo: ${prof.executable}`);
+                          setActiveProfileLabel(`Active: ${prof.executable}`);
                           applyConfig({
                             ...config,
                             active: true,
@@ -1328,7 +1328,7 @@ export const App: React.FC = () => {
                         }}
                         className="px-2.5 py-1 rounded-sm border border-[#27272A] bg-[#09090B] hover:border-[#FAFAFA] font-mono text-[10px] text-[#A1A1AA] hover:text-[#FAFAFA]"
                       >
-                        Simular Foco
+                        Test Profile
                       </button>
                       <button
                         type="button"
@@ -1354,16 +1354,16 @@ export const App: React.FC = () => {
           {activeTab === "system" && (
             <div className="max-w-4xl mx-auto">
               <SectionHeader
-                title="Sistema & Bandeja"
-                subtitle="Arquitetura de interceptação de baixo nível e gerenciamento de consumo de memória em segundo plano."
+                title="System & Tray"
+                subtitle="Choose how mouse input is handled and manage background memory usage."
                 badge="KERNEL / WIN32"
               />
 
               <div className="grid grid-cols-2 gap-4">
                 {/* Modo 1: Desktop User-Mode Hook */}
                 <SettingCard
-                  title="Modo 01 — User-Mode Hook (Safe)"
-                  description="Utiliza SetWindowsHookExW (WH_MOUSE_LL) e SendInput. Ideal para uso geral no Windows sem qualquer atrito com anti-cheats."
+                  title="Mode 01 — Standard Desktop Mode (Safe)"
+                  description="Uses standard Windows hooks (WH_MOUSE_LL). Best for everyday desktop use and 100% safe with all anti-cheats."
                   active={config.mode === "desktop_safe"}
                   badge="WH_MOUSE_LL"
                   onClick={() =>
@@ -1373,18 +1373,18 @@ export const App: React.FC = () => {
                   <div className="pt-2 flex items-center justify-between border-t border-[#1F1F23]">
                     <span className="font-mono text-[10px] text-[#A1A1AA] flex items-center gap-1.5">
                       <Shield className="w-3.5 h-3.5" strokeWidth={1.5} />
-                      100% Seguro (Vanguard / Faceit)
+                      100% Anti-Cheat Safe (Vanguard / Faceit)
                     </span>
                     <span className="font-mono text-[10px] text-[#FAFAFA]">
-                      {config.mode === "desktop_safe" ? "● ATIVO" : "SELECIONAR"}
+                      {config.mode === "desktop_safe" ? "● ACTIVE" : "SELECT"}
                     </span>
                   </div>
                 </SettingCard>
 
                 {/* Modo 2: Raw Input Kernel Bridge */}
                 <SettingCard
-                  title="Modo 02 — Raw Input Kernel Bridge"
-                  description="Integra com o driver de filtro Interception para inverter pacotes (dx, dy) diretamente no hardware antes do Raw Input de jogos FPS."
+                  title="Mode 02 — FPS Raw Input Mode (Driver)"
+                  description="Uses the Interception driver to invert mouse movement directly at the hardware level for FPS games with Raw Input."
                   active={config.mode === "fps_kernel_driver"}
                   badge="KERNEL HID"
                   onClick={() =>
@@ -1394,20 +1394,20 @@ export const App: React.FC = () => {
                   <div className="pt-2 flex items-center justify-between border-t border-[#1F1F23]">
                     <span className="font-mono text-[10px] text-[#A1A1AA] flex items-center gap-1.5">
                       <Cpu className="w-3.5 h-3.5" strokeWidth={1.5} />
-                      Suporte a Raw Input em FPS
+                      Works with Raw Input in FPS Games
                     </span>
                     <span className="font-mono text-[10px] text-[#FAFAFA]">
                       {config.mode === "fps_kernel_driver"
-                        ? "● ATIVO"
-                        : "SELECIONAR"}
+                        ? "● ACTIVE"
+                        : "SELECT"}
                     </span>
                   </div>
                 </SettingCard>
 
                 {/* Comportamento de Memória e Inicialização */}
                 <SettingCard
-                  title="Otimização Extrema de Memória (Zero-RAM Tray)"
-                  description="Destrói completamente o processo WebView2 ao fechar a janela, mantendo apenas o motor nativo em Rust (< 8 MB RAM) na bandeja."
+                  title="Low Memory Mode (Zero-RAM Tray)"
+                  description="Closes the interface completely when minimized to the system tray, keeping only the lightweight Rust engine (< 8 MB RAM) running in the background."
                   className="col-span-2"
                   badge="TRAY LIFECYCLE"
                 >
@@ -1417,10 +1417,10 @@ export const App: React.FC = () => {
                         <Layers className="w-4 h-4 text-[#A1A1AA]" strokeWidth={1.5} />
                         <div>
                           <div className="font-sans text-xs font-medium text-[#FAFAFA]">
-                            Destruir UI ao Fechar para a Bandeja
+                            Free Up Memory When Closed to Tray
                           </div>
                           <div className="font-mono text-[10px] text-[#A1A1AA]">
-                            Consumo em jogo: ~6.4 MB RAM / 0% CPU
+                            In-game usage: ~6.4 MB RAM / 0% CPU
                           </div>
                         </div>
                       </div>
@@ -1434,10 +1434,10 @@ export const App: React.FC = () => {
                     <div className="p-3 rounded-sm bg-[#09090B] border border-[#27272A] flex items-center justify-between">
                       <div>
                         <div className="font-sans text-xs font-medium text-[#FAFAFA]">
-                          Iniciar Minimizado com o Windows
+                          Start Minimized with Windows
                         </div>
                         <div className="font-mono text-[10px] text-[#A1A1AA]">
-                          Executa com THREAD_PRIORITY_TIME_CRITICAL
+                          Runs at high priority for zero input lag
                         </div>
                       </div>
                       <NoirSwitch
