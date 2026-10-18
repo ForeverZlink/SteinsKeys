@@ -643,7 +643,7 @@ export const App: React.FC = () => {
             Steins;Keys
           </span>
           <span className="font-mono text-[11px] px-1.5 py-0.5 rounded-sm bg-[#121215] border border-[#27272A] text-[#A1A1AA]">
-            v1.0
+            v1.1.0
           </span>
           <span className="font-mono text-[10px] text-[#52525B] hidden sm:inline">
             {isNativeTauri ? "NATIVE ENGINE" : "UI PREVIEW"}
